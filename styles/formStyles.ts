@@ -27,6 +27,17 @@ export const StyledSection = styled.section`
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        .error-parent {
+          width: 100%;
+          position: relative;
+          p {
+            position: absolute;
+            right: 0;
+            top: 13px;
+            font-size: 13px;
+            color: #fc4747;
+          }
+        }
         input {
           font-family: inherit;
           font-size: 15px;
@@ -63,7 +74,7 @@ export const StyledSection = styled.section`
           font-size: 15px;
           color: white;
           font-weight: 400;
-          margin-top: 25px;
+          margin-top: 15px;
           &:active {
             background-color: white;
             color: #161d2f;
