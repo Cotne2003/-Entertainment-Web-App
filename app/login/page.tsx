@@ -22,16 +22,16 @@ const Login = () => {
     watch,
   } = useForm<DataType>();
   const onSubmit = async () => {
-    try {
-      const response = await axios.post("/api/users/login", {
-        email: watch("email"),
-        password: watch("password"),
-      });
-      console.log(response.data);
-      router.push("/");
-    } catch (error: any) {
-      console.log(error.message);
-    }
+    // try {
+    //   const response = await axios.post("/api/users/login", {
+    //     email: watch("email"),
+    //     password: watch("password"),
+    //   });
+    //   console.log(response.data);
+    //   router.push("/");
+    // } catch (error: any) {
+    //   console.log(error.message);
+    // }
   };
   return (
     <StyledSection>
