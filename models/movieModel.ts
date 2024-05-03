@@ -6,7 +6,7 @@ const MovieSchema = new mongoose.Schema({
   type: String,
   age: String,
   title: String,
-  tranding: Boolean,
+  tranding: { type: Boolean, required: true },
 });
 
 const Movie = mongoose.models.movies || mongoose.model("movies", MovieSchema);
