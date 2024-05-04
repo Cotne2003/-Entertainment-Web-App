@@ -34,7 +34,7 @@ export async function POST(request: NextRequest, context: any) {
         return NextResponse.json({ error: "movie not found" }, { status: 400 });
       }
       if (!user.savedMovies.includes(movie._id)) {
-        user.savedMovies.push(movie);
+        user.savedMovies.push(movie._id);
         await user.save();
         return NextResponse.json({ message: "movie saved" }, { status: 201 });
       } else {

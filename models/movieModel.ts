@@ -9,6 +9,6 @@ const MovieSchema = new mongoose.Schema({
   tranding: { type: Boolean, required: true },
 });
 
-const Movie = mongoose.models.movies || mongoose.model("movies", MovieSchema);
+const Movie = mongoose.models.Movie || mongoose.model("Movie", MovieSchema);
 
 export default Movie;

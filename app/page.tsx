@@ -33,7 +33,7 @@ const Home = () => {
   const [age, setAge] = useState<string | null>(null);
 
   const [data, setData] = useState<movieData[]>([]);
-  const [userInfo, setUserInfo] = useState<string[]>([]);
+  const [userInfo, setUserInfo] = useState<movieData[]>([]);
 
   const post = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,7 +61,11 @@ const Home = () => {
   }, []);
 
   const saveMovie = async (id: string) => {
-    await axios.post(`/api/movies/${id}`, {});
+    try {
+      await axios.post(`/api/movies/${id}`, {});
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -125,8 +129,8 @@ const Home = () => {
       </div>
       <div style={{ color: "white", marginTop: "30px" }}>
         <h2>saved movies</h2>
-        {userInfo.map((id) => (
-          <p>{id}</p>
+        {userInfo.map((movie) => (
+          <p>{movie._id}</p>
         ))}
       </div>
     </>
