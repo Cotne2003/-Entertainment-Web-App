@@ -1,8 +1,19 @@
 "use client";
 
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+type movieData = {
+  title: string;
+  image: string;
+  date: string;
+  type: string;
+  age: string;
+  tranding: boolean;
+  _id: string;
+};
 
 const Home = () => {
   const router = useRouter();
@@ -21,9 +32,12 @@ const Home = () => {
   const [type, setType] = useState<string | null>(null);
   const [age, setAge] = useState<string | null>(null);
 
+  const [data, setData] = useState<movieData[]>([]);
+  const [userInfo, setUserInfo] = useState<string[]>([]);
+
   const post = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await axios.post("/api/movies", {
+    await axios.post("/api/movies", {
       tranding: false,
       image,
       date,
@@ -31,7 +45,23 @@ const Home = () => {
       age,
       title,
     });
-    console.log(response.data);
+  };
+
+  useEffect(() => {
+    const dataComing = async () => {
+      const response = await axios.get("/api/movies");
+      setData(response.data);
+    };
+    dataComing();
+    const userInfoComing = async () => {
+      const response = await axios.get("/api/users/me");
+      setUserInfo(response.data);
+    };
+    userInfoComing();
+  }, []);
+
+  const saveMovie = async (id: string) => {
+    await axios.post(`/api/movies/${id}`, {});
   };
 
   return (
@@ -84,6 +114,21 @@ const Home = () => {
         />
         <button type="submit">Submit</button>
       </form>
+      <div>
+        {data.map((movie) => (
+          <div key={movie._id} style={{ display: "flex", gap: "30px" }}>
+            <h2 style={{ color: "white" }}>{movie.title}</h2>
+            <Image src={movie.image} alt="photo" width={80} height={50} />
+            <button onClick={() => saveMovie(movie._id)}>save</button>
+          </div>
+        ))}
+      </div>
+      <div style={{ color: "white", marginTop: "30px" }}>
+        <h2>saved movies</h2>
+        {userInfo.map((id) => (
+          <p>{id}</p>
+        ))}
+      </div>
     </>
   );
 };

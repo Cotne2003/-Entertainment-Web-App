@@ -10,6 +10,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a password"],
   },
+  savedMovies: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Movie",
+    },
+  ],
 });
 
 const User = mongoose.models.users || mongoose.model("users", UserSchema);

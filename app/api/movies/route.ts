@@ -1,4 +1,5 @@
 import { connect } from "@/dbConfig/dbConfig";
+import { getDataFromToken } from "@/helper/getDataFromToken";
 import Movie from "@/models/movieModel";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -36,7 +37,14 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET() {
-  const movies = await Movie.find();
-  return NextResponse.json(movies);
+export async function GET(req: NextRequest) {
+  try {
+    const isAuthorization = await getDataFromToken(req);
+    if (isAuthorization) {
+      const movies = await Movie.find();
+      return NextResponse.json(movies);
+    }
+  } catch (err: any) {
+    return NextResponse.json({ err: err.message }, { status: 500 });
+  }
 }
