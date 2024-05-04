@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
 import logo from "/public/assets/logo.png";
 import styled from "styled-components";
 import Link from "next/link";
@@ -27,7 +26,7 @@ const NavBar = () => {
               className={path === "/" ? "active" : ""}
               width={16}
               height={16}
-            ></Image>
+            />
           </Link>
           <Link href={"/movies"}>
             <Image
@@ -36,7 +35,7 @@ const NavBar = () => {
               className={path === "/movies" ? "active" : ""}
               width={16}
               height={16}
-            ></Image>
+            />
           </Link>
           <Link href={"/tv-series"}>
             <Image
@@ -45,7 +44,7 @@ const NavBar = () => {
               className={path === "/tv-series" ? "active" : ""}
               width={16}
               height={16}
-            ></Image>
+            />
           </Link>
           <Link href={"/bookmarked"}>
             <Image
@@ -54,7 +53,7 @@ const NavBar = () => {
               className={path === "/bookmarked" ? "active" : ""}
               width={16}
               height={16}
-            ></Image>
+            />
           </Link>
         </div>
         <Image
@@ -72,22 +71,24 @@ const NavBar = () => {
 const StyledNav = styled.nav`
   background-color: #161d2f;
   padding: 20px 0px;
-
   .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 343px;
     margin: 0 auto;
-  }
-  .nav-container {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  .profile-img {
-    border-radius: 13px;
-    outline: 1px solid #fc4747;
+    .nav-container {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      img {
+        margin-top: 3px;
+      }
+    }
+    .profile-img {
+      border-radius: 13px;
+      outline: 1px solid #fc4747;
+    }
   }
   /* img {
     &:hover {

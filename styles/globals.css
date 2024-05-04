@@ -10,4 +10,10 @@ body {
   background-color: #10141e;
   font-family: "Outfit", sans-serif;
   color: white;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
