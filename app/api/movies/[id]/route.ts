@@ -33,14 +33,17 @@ export async function POST(request: NextRequest, context: any) {
       if (!movie) {
         return NextResponse.json({ error: "movie not found" }, { status: 400 });
       }
-      if (!user.savedMovies.includes(movie._id)) {
+      const movieIndex = user.savedMovies.indexOf(movie._id);
+      if (movieIndex === -1) {
         user.savedMovies.push(movie._id);
         await user.save();
         return NextResponse.json({ message: "movie saved" }, { status: 201 });
       } else {
+        user.savedMovies.splice(movieIndex, 1);
+        await user.save();
         return NextResponse.json(
-          { error: "Movie already saved" },
-          { status: 400 }
+          { error: "Movie deleted successfully" },
+          { status: 202 }
         );
       }
     }

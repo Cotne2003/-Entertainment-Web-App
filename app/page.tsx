@@ -27,20 +27,12 @@ const Home = () => {
       );
     };
     dataComing();
-    const userInfoComing = async () => {
+    const getUserBookmarks = async () => {
       const response = await axios.get("/api/users/me");
       setUserInfo(response.data);
     };
-    userInfoComing();
+    getUserBookmarks();
   }, []);
-
-  const saveMovie = async (id: string) => {
-    try {
-      await axios.post(`/api/movies/${id}`, {});
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   return (
     <>
@@ -63,6 +55,7 @@ const Home = () => {
                   title={movie.title}
                   type={movie.type}
                   key={movie._id}
+                  userInfo={userInfo}
                 />
               ))}
             </div>

@@ -15,6 +15,8 @@ type Props = {
 
 const MoviesSeriesPage = ({ movieType }: Props) => {
   const [movies, setMovies] = useState<movieData[]>([]);
+  const [userInfo, setUserInfo] = useState<movieData[]>([]);
+
   useEffect(() => {
     const getMovieTypes = async () => {
       const response = await axios.get("/api/movies");
@@ -24,6 +26,11 @@ const MoviesSeriesPage = ({ movieType }: Props) => {
       );
     };
     getMovieTypes();
+    const getUserBookmarks = async () => {
+      const response = await axios.get("/api/users/me");
+      setUserInfo(response.data);
+    };
+    getUserBookmarks();
   }, []);
   return (
     <>
@@ -43,6 +50,7 @@ const MoviesSeriesPage = ({ movieType }: Props) => {
                   title={movie.title}
                   type={movie.type}
                   key={movie._id}
+                  userInfo={userInfo}
                 />
               ))}
             </div>

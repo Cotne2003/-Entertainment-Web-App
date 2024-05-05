@@ -12,11 +12,13 @@ import styled from "styled-components";
 const page = () => {
   const [movies, setMovies] = useState<movieData[]>([]);
   const [series, setSeries] = useState<movieData[]>([]);
+  const [userInfo, setUserInfo] = useState<movieData[]>([]);
 
   useEffect(() => {
     const getMovieTypes = async () => {
       const response = await axios.get("/api/users/me");
       const responseData = response.data;
+      setUserInfo(responseData);
       setMovies(
         responseData.filter((movie: movieData) => movie.type === "movie")
       );
@@ -26,6 +28,7 @@ const page = () => {
     };
     getMovieTypes();
   }, []);
+
   return (
     <>
       <NavBar />
@@ -44,6 +47,7 @@ const page = () => {
                   title={movie.title}
                   type={movie.type}
                   key={movie._id}
+                  userInfo={userInfo}
                 />
               ))}
             </div>
@@ -60,6 +64,7 @@ const page = () => {
                   title={movie.title}
                   type={movie.type}
                   key={movie._id}
+                  userInfo={userInfo}
                 />
               ))}
             </div>
