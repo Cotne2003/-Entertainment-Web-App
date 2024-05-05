@@ -9,10 +9,21 @@ import shape from "/public/icons/Shape.png";
 import shape4 from "/public/icons/Shape4.png";
 import bookmark from "/public/icons/Bookmark.png";
 import profile from "/public/assets/profile.png";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 import { usePathname } from "next/navigation";
 
 const NavBar = () => {
+  const router = useRouter();
   const path = usePathname();
+  const logout = async () => {
+    try {
+      await axios.get("/api/users/logout");
+      router.push("/login");
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <StyledNav>
@@ -62,6 +73,7 @@ const NavBar = () => {
           className="profile-img"
           width={24}
           height={24}
+          onClick={logout}
         />
       </div>
     </StyledNav>
@@ -88,6 +100,7 @@ const StyledNav = styled.nav`
     .profile-img {
       border-radius: 13px;
       outline: 1px solid #fc4747;
+      cursor: pointer;
     }
   }
   /* img {
