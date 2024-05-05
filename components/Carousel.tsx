@@ -51,7 +51,6 @@ const StyledCarousel = styled.div`
     gap: 10px;
     .movie-container {
       position: relative;
-      width: 240px;
       height: 140px;
       padding: 85px 0 0 20px;
       .main-img {

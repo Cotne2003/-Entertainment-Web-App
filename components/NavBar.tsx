@@ -82,7 +82,7 @@ const StyledNav = styled.nav`
       gap: 20px;
       align-items: center;
       img {
-        margin-top: 3px;
+        margin-top: 5px;
       }
     }
     .profile-img {

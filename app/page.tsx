@@ -9,6 +9,8 @@ import search from "/public/icons/search.png";
 import styled from "styled-components";
 import NavBar from "@/components/NavBar";
 import Carousel from "@/components/Carousel";
+import { Title } from "@/styles/title";
+import OneMovie from "@/components/OneMovie";
 
 const Home = () => {
   const router = useRouter();
@@ -28,6 +30,7 @@ const Home = () => {
   const [age, setAge] = useState<string | null>(null);
 
   const [trendingMovies, setTrendingMovies] = useState<movieData[]>([]);
+  const [nonTrendingMovies, setNonTrendingMovies] = useState<movieData[]>([]);
   const [userInfo, setUserInfo] = useState<movieData[]>([]);
 
   const post = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,6 +51,9 @@ const Home = () => {
       const responseData = response.data;
       setTrendingMovies(
         responseData.filter((movie: movieData) => movie.tranding === true)
+      );
+      setNonTrendingMovies(
+        responseData.filter((movie: movieData) => movie.tranding === false)
       );
     };
     dataComing();
@@ -70,13 +76,31 @@ const Home = () => {
     <>
       <NavBar />
       <StyledBack>
-        <StyledSection>
-          <div className="search">
+        <StyledCont>
+          <section className="search">
             <Image src={search} width={18} height={18} alt="sarch" />
             <input type="text" placeholder="Search for movies or TV series" />
-          </div>
-          <Carousel trendingMovies={trendingMovies} />
-          <button onClick={logout} style={{ marginTop: "300px" }}>
+          </section>
+          <section>
+            <Carousel trendingMovies={trendingMovies} />
+          </section>
+          <section className="recommended">
+            <Title>Recommended for you</Title>
+            <div className="recommended-movies">
+              {nonTrendingMovies.map((movie) => (
+                <OneMovie
+                  _id={movie._id}
+                  age={movie.age}
+                  date={movie.date}
+                  image={movie.image}
+                  title={movie.title}
+                  type={movie.type}
+                  key={movie._id}
+                />
+              ))}
+            </div>
+          </section>
+          <button onClick={logout} style={{ marginTop: "30px" }}>
             Logout
           </button>
           <form
@@ -126,28 +150,19 @@ const Home = () => {
             />
             <button type="submit">Submit</button>
           </form>
-          <div>
-            {trendingMovies.map((movie) => (
-              <div key={movie._id} style={{ display: "flex", gap: "30px" }}>
-                <h2 style={{ color: "white" }}>{movie.title}</h2>
-                <Image src={movie.image} alt="photo" width={80} height={50} />
-                <button onClick={() => saveMovie(movie._id)}>save</button>
-              </div>
-            ))}
-          </div>
           <div style={{ color: "white", marginTop: "30px" }}>
             <h2>saved movies</h2>
             {userInfo.map((movie) => (
               <p>{movie._id}</p>
             ))}
           </div>
-        </StyledSection>
+        </StyledCont>
       </StyledBack>
     </>
   );
 };
 
-const StyledSection = styled.section`
+const StyledCont = styled.div`
   .search {
     display: flex;
     gap: 10px;
@@ -163,6 +178,16 @@ const StyledSection = styled.section`
       font-size: 16px;
       outline: none;
       caret-color: #fc4747;
+    }
+  }
+  .recommended {
+    margin-top: 200px;
+    .recommended-movies {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 20px;
     }
   }
 `;
