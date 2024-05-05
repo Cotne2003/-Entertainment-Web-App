@@ -4,16 +4,44 @@ import { Title } from "@/styles/title";
 import Image from "next/image";
 import shape4 from "/public/icons/Shape4.png";
 import styled from "styled-components";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   trendingMovies: movieData[];
 };
 
 const Carousel = ({ trendingMovies }: Props) => {
+  const [isClicked, setIsClicked] = useState(false);
+  const scrollableRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout | null = null;
+
+    if (!isClicked) {
+      intervalId = setInterval(() => {
+        scrollableRef.current?.scrollBy(1, 0);
+      }, 20);
+    }
+
+    return () => {
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [isClicked]);
   return (
     <StyledCarousel>
       <Title>trending</Title>
-      <div className="carousel">
+      <div
+        className="carousel"
+        ref={scrollableRef}
+        onMouseOver={() => {
+          setIsClicked(true);
+        }}
+        onMouseOut={() => {
+          setIsClicked(false);
+        }}
+      >
         {trendingMovies.map((movie) => (
           <div className="movie-container" key={movie._id}>
             <Image
@@ -44,11 +72,18 @@ const Carousel = ({ trendingMovies }: Props) => {
 const StyledCarousel = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
   position: absolute;
   .carousel {
+    width: calc(343px);
+    gap: 35px;
+    overflow-x: scroll;
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .movie-container {
       position: relative;
       height: 140px;
@@ -61,6 +96,7 @@ const StyledCarousel = styled.div`
         z-index: -1;
       }
       .movie-info {
+        width: 200px;
         .title {
           font-size: 15px;
           font-weight: 400;
