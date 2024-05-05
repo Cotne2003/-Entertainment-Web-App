@@ -67,12 +67,6 @@ const Home = () => {
               ))}
             </div>
           </section>
-          <div style={{ color: "white", marginTop: "30px" }}>
-            <h2>saved movies</h2>
-            {userInfo.map((movie) => (
-              <p>{movie._id}</p>
-            ))}
-          </div>
         </StyledCont>
       </StyledBack>
     </>
