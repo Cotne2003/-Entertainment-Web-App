@@ -21,7 +21,7 @@ const OneMovie = ({ title, _id, age, date, image, type, userInfo }: Props) => {
   useEffect(() => {
     const isMovieSaved = userInfo.some((movie) => movie._id === _id);
     setSaved(isMovieSaved);
-  }, []);
+  }, [userInfo]);
 
   const saveMovie = async (id: string) => {
     try {

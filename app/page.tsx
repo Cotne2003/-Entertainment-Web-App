@@ -14,11 +14,13 @@ const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState<movieData[]>([]);
   const [nonTrendingMovies, setNonTrendingMovies] = useState<movieData[]>([]);
   const [userInfo, setUserInfo] = useState<movieData[]>([]);
+  const [movies, setMovies] = useState<movieData[]>([]);
 
   useEffect(() => {
     const dataComing = async () => {
       const response = await axios.get("/api/movies");
       const responseData = response.data;
+      setMovies(responseData);
       setTrendingMovies(
         responseData.filter((movie: movieData) => movie.tranding === true)
       );
@@ -39,9 +41,9 @@ const Home = () => {
       <NavBar />
       <StyledBack>
         <StyledCont>
-          <Search />
+          <Search movies={movies} />
           <section>
-            <Carousel trendingMovies={trendingMovies} />
+            <Carousel trendingMovies={trendingMovies} userInfo={userInfo} />
           </section>
           <section className="recommended">
             <Title>Recommended for you</Title>
