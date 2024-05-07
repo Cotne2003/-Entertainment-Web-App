@@ -29,7 +29,7 @@ const SignUp = () => {
         email: watch("email"),
         password: watch("password"),
       });
-      router.push("/home");
+      router.push("/login");
       console.log(response.data);
     } catch (error: any) {
       console.log(error.message);

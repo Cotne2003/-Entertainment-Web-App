@@ -11,6 +11,7 @@ import styled from "styled-components";
 
 const page = () => {
   const [movies, setMovies] = useState<movieData[]>([]);
+  const [allMovies, setAllMovies] = useState<movieData[]>([]);
   const [series, setSeries] = useState<movieData[]>([]);
   const [userInfo, setUserInfo] = useState<movieData[]>([]);
 
@@ -18,6 +19,7 @@ const page = () => {
     const getMovieTypes = async () => {
       const response = await axios.get("/api/users/me");
       const responseData = response.data;
+      setAllMovies(responseData);
       setUserInfo(responseData);
       setMovies(
         responseData.filter((movie: movieData) => movie.type === "movie")
@@ -34,7 +36,7 @@ const page = () => {
       <NavBar />
       <StyledBack>
         <StyledCont>
-          <Search />
+          <Search movies={allMovies} userInfo={userInfo} />
           <div className="movies-cont">
             <Title>bookmarked movies</Title>
             <div className="movies">

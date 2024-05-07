@@ -41,7 +41,7 @@ const Home = () => {
       <NavBar />
       <StyledBack>
         <StyledCont>
-          <Search movies={movies} />
+          <Search movies={movies} userInfo={userInfo} />
           <section>
             <Carousel trendingMovies={trendingMovies} userInfo={userInfo} />
           </section>

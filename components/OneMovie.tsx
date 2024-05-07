@@ -58,6 +58,13 @@ const OneMovie = ({ title, _id, age, date, image, type, userInfo }: Props) => {
   );
 };
 
+// const isPublicPath =
+//   path === "/login" ||
+//   path === "/sign-up" ||
+//   path === "/movies" ||
+//   path === "/tv-series" ||
+//   path === "/bookmarked";
+
 const MovieContainer = styled.div`
   position: relative;
   .circle-of-save {

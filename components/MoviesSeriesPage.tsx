@@ -15,12 +15,14 @@ type Props = {
 
 const MoviesSeriesPage = ({ movieType }: Props) => {
   const [movies, setMovies] = useState<movieData[]>([]);
+  const [allMovies, setAllMovies] = useState<movieData[]>([]);
   const [userInfo, setUserInfo] = useState<movieData[]>([]);
 
   useEffect(() => {
     const getMovieTypes = async () => {
       const response = await axios.get("/api/movies");
       const responseData = response.data;
+      setAllMovies(responseData);
       setMovies(
         responseData.filter((movie: movieData) => movie.type === movieType)
       );
@@ -37,7 +39,7 @@ const MoviesSeriesPage = ({ movieType }: Props) => {
       <NavBar />
       <StyledBack>
         <StyledCont>
-          <Search />
+          <Search movies={allMovies} userInfo={userInfo} />
           <div className="movies-cont">
             <Title>{movieType === "movie" ? "movies" : "tV series"}</Title>
             <div className="movies">
