@@ -42,7 +42,7 @@ const Home = () => {
       <StyledBack>
         <StyledCont>
           <Search movies={movies} userInfo={userInfo} />
-          <section>
+          <section className="carousel-sect">
             <Carousel trendingMovies={trendingMovies} userInfo={userInfo} />
           </section>
           <section className="recommended">
@@ -70,13 +70,21 @@ const Home = () => {
 
 const StyledCont = styled.div`
   .recommended {
-    margin-top: 200px;
+    margin-top: 20px;
+    @media (min-width: 768px) {
+      margin-top: 30px;
+    }
     .recommended-movies {
       margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       row-gap: 20px;
+      gap: 15px;
+      @media (min-width: 768px) {
+        margin-top: 30px;
+        row-gap: 30px;
+        gap: 29px;
+      }
     }
   }
 `;

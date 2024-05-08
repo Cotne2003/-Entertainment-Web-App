@@ -17,6 +17,11 @@ export const StyledSection = styled.section`
       padding: 30px 20px;
       background-color: #161d2f;
       border-radius: 15px;
+      @media (min-width: 768px) {
+        width: 400px;
+        padding: 35px 35px;
+        gap: 25px;
+      }
       h1 {
         font-size: 32px;
         color: white;
@@ -27,6 +32,9 @@ export const StyledSection = styled.section`
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        @media (min-width: 768px) {
+          gap: 25px;
+        }
         .error-parent {
           width: 100%;
           position: relative;

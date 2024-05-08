@@ -55,11 +55,24 @@ const Search = ({ movies, userInfo }: Props) => {
 
 const StyledSection = styled.section`
   position: relative;
+  @media (min-width: 768px) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   .search-container {
     display: flex;
     gap: 10px;
     align-items: center;
     padding: 25px 0;
+    @media (min-width: 768px) {
+      gap: 30px;
+    }
+    img {
+      @media (min-width: 768px) {
+        width: 24px;
+        height: 24px;
+      }
+    }
     input {
       width: 100%;
       color: inherit;
@@ -70,18 +83,27 @@ const StyledSection = styled.section`
       font-size: 16px;
       outline: none;
       caret-color: #fc4747;
+      @media (min-width: 768px) {
+        font-size: 24px;
+      }
     }
   }
   .searched-movies {
     background-color: #161d2f;
-    width: 343px;
+    width: 363px;
+    left: -10px;
     padding: 30px 0;
     border-radius: 10px;
     position: absolute;
     z-index: 2;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     row-gap: 20px;
+    @media (min-width: 768px) {
+      width: 739px;
+      row-gap: 30px;
+    }
   }
 `;
 

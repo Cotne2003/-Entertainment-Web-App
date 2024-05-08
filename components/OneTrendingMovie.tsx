@@ -47,8 +47,8 @@ const OneTrendingMovie = ({
       <Image
         src={image}
         alt="movie-background"
-        width={240}
-        height={140}
+        width={470}
+        height={230}
         className="main-img"
       />
       <div className="movie-info">

@@ -83,12 +83,20 @@ const StyledCont = styled.div`
       margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       row-gap: 20px;
+      gap: 15px;
+      @media (min-width: 768px) {
+        row-gap: 30px;
+        gap: 29px;
+        margin-top: 30px;
+      }
     }
   }
   .second {
     margin-top: 30px;
+    @media (min-width: 768px) {
+      margin-top: 40px;
+    }
   }
 `;
 

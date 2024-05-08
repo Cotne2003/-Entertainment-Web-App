@@ -28,15 +28,15 @@ const NavBar = () => {
   return (
     <StyledNav>
       <div className="wrapper">
-        <Image src={logo} alt="logo" width={25} height={20} />
+        <Image src={logo} alt="logo" className="logo" width={25} height={20} />
         <div className="nav-container">
           <Link href={"/"}>
             <Image
               src={shape}
               alt=""
               className={path === "/" ? "active" : ""}
-              width={16}
-              height={16}
+              width={20}
+              height={20}
             />
           </Link>
           <Link href={"/movies"}>
@@ -44,8 +44,8 @@ const NavBar = () => {
               src={shape4}
               alt=""
               className={path === "/movies" ? "active" : ""}
-              width={16}
-              height={16}
+              width={20}
+              height={20}
             />
           </Link>
           <Link href={"/tv-series"}>
@@ -53,17 +53,17 @@ const NavBar = () => {
               src={tv}
               alt=""
               className={path === "/tv-series" ? "active" : ""}
-              width={16}
-              height={16}
+              width={20}
+              height={20}
             />
           </Link>
           <Link href={"/bookmarked"}>
             <Image
               src={bookmark}
               alt=""
-              className={path === "/bookmarked" ? "active" : ""}
-              width={16}
-              height={16}
+              className={"bookmark " + (path === "/bookmarked" ? "active" : "")}
+              width={17}
+              height={20}
             />
           </Link>
         </div>
@@ -83,24 +83,53 @@ const NavBar = () => {
 const StyledNav = styled.nav`
   background-color: #161d2f;
   padding: 20px 0px;
+  @media (min-width: 768px) {
+    width: 719px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
   .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 343px;
     margin: 0 auto;
+    @media (min-width: 768px) {
+      max-width: 100%;
+      margin: 0 20px;
+    }
+    .logo {
+      @media (min-width: 768px) {
+        width: 30px;
+        height: 25px;
+      }
+    }
     .nav-container {
       display: flex;
       gap: 20px;
       align-items: center;
       img {
         margin-top: 5px;
+        @media (max-width: 767px) {
+          width: 16px;
+          height: 16px;
+        }
+      }
+      .bookmark {
+        @media (max-width: 767px) {
+          width: 14px;
+        }
       }
     }
     .profile-img {
       border-radius: 13px;
       outline: 1px solid #fc4747;
       cursor: pointer;
+      @media (min-width: 768px) {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
   /* img {

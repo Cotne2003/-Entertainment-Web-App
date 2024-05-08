@@ -69,8 +69,13 @@ const StyledCont = styled.div`
       margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      gap: 15px;
       row-gap: 20px;
+      @media (min-width: 768px) {
+        row-gap: 30px;
+        gap: 29px;
+        margin-top: 30px;
+      }
     }
   }
 `;

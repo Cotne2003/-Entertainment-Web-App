@@ -39,8 +39,8 @@ const OneMovie = ({ title, _id, age, date, image, type, userInfo }: Props) => {
       <Image
         src={image}
         alt="movie-background"
-        width={164}
-        height={110}
+        width={280}
+        height={174}
         className="main-img"
       />
       <div className="movie-info">
@@ -58,15 +58,11 @@ const OneMovie = ({ title, _id, age, date, image, type, userInfo }: Props) => {
   );
 };
 
-// const isPublicPath =
-//   path === "/login" ||
-//   path === "/sign-up" ||
-//   path === "/movies" ||
-//   path === "/tv-series" ||
-//   path === "/bookmarked";
-
 const MovieContainer = styled.div`
   position: relative;
+  @media (min-width: 768px) {
+    width: 220px;
+  }
   .circle-of-save {
     width: 32px;
     height: 32px;
@@ -79,6 +75,10 @@ const MovieContainer = styled.div`
     right: 10px;
     top: 10px;
     cursor: pointer;
+    @media (min-width: 768px) {
+      right: 15px;
+      top: 15px;
+    }
     /* &:hover {
       background-color: white;
       img {
@@ -89,6 +89,12 @@ const MovieContainer = styled.div`
   }
   .main-img {
     border-radius: 10px;
+    width: 164px;
+    height: 110px;
+    @media (min-width: 768px) {
+      width: 220px;
+      height: 140px;
+    }
   }
   .movie-info {
     margin-top: 10px;
@@ -97,6 +103,10 @@ const MovieContainer = styled.div`
       font-weight: 400;
       text-transform: capitalize;
       margin-top: 4px;
+      @media (min-width: 768px) {
+        font-size: 18px;
+        margin-top: 8px;
+      }
     }
     .first-info {
       display: flex;
@@ -118,12 +128,18 @@ const MovieContainer = styled.div`
         font-size: 12px;
         font-weight: 400;
         text-transform: capitalize;
+        @media (min-width: 768px) {
+          font-size: 13px;
+        }
       }
       .movie-age {
         text-transform: uppercase;
         font-size: 12px;
         font-weight: 400;
         opacity: 75%;
+        @media (min-width: 768px) {
+          font-size: 13px;
+        }
       }
     }
   }

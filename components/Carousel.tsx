@@ -62,22 +62,31 @@ const Carousel = ({ trendingMovies, userInfo }: Props) => {
 const StyledCarousel = styled.div`
   display: flex;
   flex-direction: column;
-  position: absolute;
   .carousel {
-    width: calc(343px);
+    width: 100%;
     gap: 35px;
     overflow-x: scroll;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 15px;
+    @media (min-width: 768px) {
+      margin-top: 25px;
+      gap: 80px;
+    }
     &::-webkit-scrollbar {
       display: none;
     }
     .movie-container {
       position: relative;
+      width: 240px;
       height: 140px;
       padding: 85px 0 0 20px;
+      @media (min-width: 768px) {
+        width: 470px;
+        height: 230px;
+        padding: 150px 0 0 30px;
+      }
       .circle-of-save {
         width: 32px;
         height: 32px;
@@ -87,9 +96,13 @@ const StyledCarousel = styled.div`
         justify-content: center;
         align-items: center;
         position: absolute;
-        right: -5px;
+        right: 10px;
         top: 10px;
         cursor: pointer;
+        @media (min-width: 768px) {
+          right: -5px;
+          top: 15px;
+        }
         /* &:hover {
       background-color: white;
       img {
@@ -104,14 +117,28 @@ const StyledCarousel = styled.div`
         left: 0;
         top: 0;
         z-index: -1;
+        width: 240px;
+        height: 140px;
+        @media (min-width: 768px) {
+          width: 470px;
+          height: 230px;
+        }
       }
       .movie-info {
-        width: 200px;
+        width: 220px;
+        @media (min-width: 768px) {
+          width: 410px;
+        }
+
         .title {
           font-size: 15px;
           font-weight: 400;
           text-transform: capitalize;
           margin-top: 3px;
+          @media (min-width: 768px) {
+            font-size: 24px;
+            margin-top: 10px;
+          }
         }
         .first-info {
           display: flex;
@@ -133,12 +160,18 @@ const StyledCarousel = styled.div`
             font-size: 12px;
             font-weight: 400;
             text-transform: capitalize;
+            @media (min-width: 768px) {
+              font-size: 15px;
+            }
           }
           .movie-age {
             text-transform: uppercase;
             font-size: 12px;
             font-weight: 400;
             opacity: 75%;
+            @media (min-width: 768px) {
+              font-size: 15px;
+            }
           }
         }
       }
