@@ -103,13 +103,15 @@ const StyledCarousel = styled.div`
           right: -5px;
           top: 15px;
         }
-        /* &:hover {
-      background-color: white;
-      img {
-        filter: invert(0%) sepia(12%) saturate(7478%) hue-rotate(130deg)
-          brightness(4%) contrast(101%);
-      }
-    } */
+        @media (min-width: 1024px) {
+          &:hover {
+            background-color: white;
+            img {
+              filter: invert(0%) sepia(12%) saturate(7478%) hue-rotate(130deg)
+                brightness(4%) contrast(101%);
+            }
+          }
+        }
       }
       .main-img {
         border-radius: 10px;

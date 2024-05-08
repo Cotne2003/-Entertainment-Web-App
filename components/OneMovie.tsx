@@ -5,6 +5,7 @@ import path from "/public/icons/Path.png";
 import path2 from "/public/icons/Path2.png";
 import styled from "styled-components";
 import axios from "axios";
+import tv from "/public/icons/tv.png";
 
 type Props = {
   title: string;
@@ -47,7 +48,12 @@ const OneMovie = ({ title, _id, age, date, image, type, userInfo }: Props) => {
         <div className="first-info">
           <p>{date}</p>
           <span className="circle"></span>
-          <Image src={shape4} alt="" width={16} height={16} />
+          <Image
+            src={type === "movie" ? shape4 : tv}
+            alt=""
+            width={16}
+            height={16}
+          />
           <p>{type}</p>
           <span className="circle"></span>
           <span className="movie-age">{age}</span>
@@ -79,13 +85,15 @@ const MovieContainer = styled.div`
       right: 15px;
       top: 15px;
     }
-    /* &:hover {
-      background-color: white;
-      img {
-        filter: invert(0%) sepia(12%) saturate(7478%) hue-rotate(130deg)
-          brightness(4%) contrast(101%);
+    @media (min-width: 1024px) {
+      &:hover {
+        background-color: white;
+        img {
+          filter: invert(0%) sepia(12%) saturate(7478%) hue-rotate(130deg)
+            brightness(4%) contrast(101%);
+        }
       }
-    } */
+    }
   }
   .main-img {
     border-radius: 10px;
