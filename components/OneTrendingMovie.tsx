@@ -1,3 +1,5 @@
+"use client";
+
 import path2 from "/public/icons/Path2.png";
 import shape4 from "/public/icons/Shape4.png";
 import Image from "next/image";

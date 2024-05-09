@@ -1,3 +1,4 @@
+"use client";
 import MoviesSeriesPage from "@/components/MoviesSeriesPage";
 
 const page = () => {
