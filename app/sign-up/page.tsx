@@ -5,8 +5,10 @@ import Image from "next/image";
 import logo from "/public/assets/logo.png";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 type DataType = {
   email: string;
@@ -15,6 +17,7 @@ type DataType = {
 };
 
 const SignUp = () => {
+  const [lodaing, setLoading] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -25,6 +28,7 @@ const SignUp = () => {
   const password = watch("password", "");
   const onSubmit = async () => {
     try {
+      setLoading(true);
       const response = await axios.post("/api/users/signup", {
         email: watch("email"),
         password: watch("password"),
@@ -32,7 +36,14 @@ const SignUp = () => {
       router.push("/login");
       console.log(response.data);
     } catch (error: any) {
-      console.log(error.message);
+      const axiosErr = error as AxiosError;
+      if (axiosErr.response?.status === 401) {
+        toast.error("User is already exists");
+      } else {
+        toast.error("Server error. Please try again later");
+      }
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -98,7 +109,20 @@ const SignUp = () => {
                 <p>{errors.confirmPassword?.message}</p>
               )}
             </div>
-            <button type="submit">Create an account</button>
+            <button type="submit">
+              {lodaing ? (
+                <div className="wrapper">
+                  <div className="circle"></div>
+                  <div className="circle"></div>
+                  <div className="circle"></div>
+                  <div className="shadow"></div>
+                  <div className="shadow"></div>
+                  <div className="shadow"></div>
+                </div>
+              ) : (
+                "Create an account"
+              )}
+            </button>
           </form>
           <p>
             Alread have an account? <Link href="login">Login</Link>

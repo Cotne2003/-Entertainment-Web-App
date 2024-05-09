@@ -8,7 +8,7 @@ import tv from "/public/icons/tv.png";
 import shape from "/public/icons/Shape.png";
 import shape4 from "/public/icons/Shape4.png";
 import bookmark from "/public/icons/Bookmark.png";
-import profile from "/public/assets/profile.png";
+import logoutIcon from "/public/icons/logout.png";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { usePathname } from "next/navigation";
@@ -68,11 +68,11 @@ const NavBar = () => {
           </Link>
         </div>
         <Image
-          src={profile}
-          alt="profile"
-          className="profile-img"
-          width={24}
-          height={24}
+          src={logoutIcon}
+          alt="logout icon"
+          className="logout-img"
+          width={30}
+          height={30}
           onClick={logout}
         />
       </div>
@@ -138,14 +138,14 @@ const StyledNav = styled.nav`
         }
       }
     }
-    .profile-img {
-      border-radius: 13px;
-      outline: 1px solid #fc4747;
+    .logout-img {
       cursor: pointer;
       filter: none;
+      width: 20px;
+      height: 20px;
       @media (min-width: 768px) {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
       }
     }
   }

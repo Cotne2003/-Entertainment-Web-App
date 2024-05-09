@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import search from "/public/icons/search.png";
 import styled from "styled-components";
 import OneMovie from "./OneMovie";
+import { motion } from "framer-motion";
 
 type Props = {
   movies: movieData[];
@@ -34,7 +35,12 @@ const Search = ({ movies, userInfo }: Props) => {
         />
       </div>
       {searchValue && searchedMovies.length !== 0 && (
-        <div className="searched-movies">
+        <motion.div
+          className="searched-movies"
+          initial={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          whileInView={{ opacity: 1 }}
+        >
           {searchedMovies.map((movie) => (
             <OneMovie
               key={movie._id}
@@ -47,7 +53,7 @@ const Search = ({ movies, userInfo }: Props) => {
               userInfo={userInfo}
             />
           ))}
-        </div>
+        </motion.div>
       )}
     </StyledSection>
   );

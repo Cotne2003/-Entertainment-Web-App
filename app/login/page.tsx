@@ -3,10 +3,12 @@
 import Image from "next/image";
 import logo from "/public/assets/logo.png";
 import Link from "next/link";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { StyledSection } from "@/styles/formStyles";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 type DataType = {
   email: string;
@@ -14,6 +16,7 @@ type DataType = {
 };
 
 const Login = () => {
+  const [lodaing, setLoading] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -23,14 +26,23 @@ const Login = () => {
   } = useForm<DataType>();
   const onSubmit = async () => {
     try {
+      setLoading(true);
       const response = await axios.post("/api/users/login", {
         email: watch("email"),
         password: watch("password"),
       });
-      console.log(response.data);
       router.push("/");
     } catch (error: any) {
-      console.log(error.message);
+      const axiosErr = error as AxiosError;
+      if (axiosErr.response?.status === 401) {
+        toast.error("Password is incorrect");
+      } else if (axiosErr.response?.status === 400) {
+        toast.error("User is not authorized");
+      } else {
+        toast.error("Server error. Please try again later");
+      }
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -77,7 +89,20 @@ const Login = () => {
               />
               {errors.password?.message && <p>{errors.password?.message}</p>}
             </div>
-            <button type="submit">Login to your account</button>
+            <button type="submit">
+              {lodaing ? (
+                <div className="wrapper">
+                  <div className="circle"></div>
+                  <div className="circle"></div>
+                  <div className="circle"></div>
+                  <div className="shadow"></div>
+                  <div className="shadow"></div>
+                  <div className="shadow"></div>
+                </div>
+              ) : (
+                "Login to your account"
+              )}
+            </button>
           </form>
           <p>
             Don’t have an account? <Link href="sign-up">Sign Up</Link>
