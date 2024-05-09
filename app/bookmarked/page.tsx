@@ -17,7 +17,9 @@ const page = () => {
 
   useEffect(() => {
     const getMovieTypes = async () => {
-      const response = await axios.get("/api/users/me");
+      const response = await axios.get(
+        "https://entertainment-web-app-murex-five.vercel.app/api/users/me"
+      );
       const responseData = response.data;
       setAllMovies(responseData);
       setUserInfo(responseData);

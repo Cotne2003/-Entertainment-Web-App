@@ -18,7 +18,9 @@ const Home = () => {
 
   useEffect(() => {
     const dataComing = async () => {
-      const response = await axios.get("/api/movies");
+      const response = await axios.get(
+        "https://entertainment-web-app-murex-five.vercel.app/api/movies"
+      );
       const responseData = response.data;
       setMovies(responseData);
       setTrendingMovies(
@@ -30,7 +32,9 @@ const Home = () => {
     };
     dataComing();
     const getUserBookmarks = async () => {
-      const response = await axios.get("/api/users/me");
+      const response = await axios.get(
+        "https://entertainment-web-app-murex-five.vercel.app/api/users/me"
+      );
       setUserInfo(response.data);
     };
     getUserBookmarks();

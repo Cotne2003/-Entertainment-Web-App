@@ -27,10 +27,13 @@ const Login = () => {
   const onSubmit = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/login", {
-        email: watch("email"),
-        password: watch("password"),
-      });
+      const response = await axios.post(
+        "https://entertainment-web-app-murex-five.vercel.app/api/users/login",
+        {
+          email: watch("email"),
+          password: watch("password"),
+        }
+      );
       router.push("/");
     } catch (error: any) {
       const axiosErr = error as AxiosError;
