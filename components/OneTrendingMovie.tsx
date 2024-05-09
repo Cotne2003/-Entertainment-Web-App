@@ -52,12 +52,14 @@ const OneTrendingMovie = ({
       <div className="circle-of-save" onClick={() => saveMovie(_id)}>
         <Image src={saved ? path2 : path} alt="" width={12} height={14} />
       </div>
-      <div className="hover-blur">
-        <div className="play-cont">
-          <Image src={play} alt="" width={30} height={30} />
-          <p>play</p>
+      {onHover && (
+        <div className="hover-blur">
+          <div className="play-cont">
+            <Image src={play} alt="" width={30} height={30} />
+            <p>play</p>
+          </div>
         </div>
-      </div>
+      )}
       <Image
         src={image}
         alt="movie-background"

@@ -126,6 +126,7 @@ const StyledNav = styled.nav`
       border-radius: 13px;
       outline: 1px solid #fc4747;
       cursor: pointer;
+      filter: none;
       @media (min-width: 768px) {
         width: 30px;
         height: 30px;

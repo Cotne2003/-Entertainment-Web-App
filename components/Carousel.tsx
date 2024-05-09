@@ -72,7 +72,7 @@ const StyledCarousel = styled.div`
     margin-top: 15px;
     @media (min-width: 768px) {
       margin-top: 25px;
-      gap: 80px;
+      gap: 40px;
     }
     &::-webkit-scrollbar {
       display: none;
@@ -83,9 +83,40 @@ const StyledCarousel = styled.div`
       height: 140px;
       padding: 85px 0 0 20px;
       @media (min-width: 768px) {
-        width: 470px;
+        min-width: 470px;
         height: 230px;
         padding: 150px 0 0 30px;
+      }
+      .hover-blur {
+        display: none;
+        @media (min-width: 1024px) {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: #00000080;
+          left: 0;
+          top: 0;
+          border-radius: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .play-cont {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 30px;
+          width: 100px;
+          height: 48px;
+          justify-content: center;
+          gap: 12px;
+          cursor: pointer;
+          p {
+            font-size: 18px;
+            text-transform: capitalize;
+          }
+        }
       }
       .circle-of-save {
         width: 32px;
@@ -98,9 +129,10 @@ const StyledCarousel = styled.div`
         position: absolute;
         right: 10px;
         top: 10px;
+        z-index: 1;
         cursor: pointer;
         @media (min-width: 768px) {
-          right: -5px;
+          right: 15px;
           top: 15px;
         }
         @media (min-width: 1024px) {

@@ -16,7 +16,7 @@ const Search = ({ movies, userInfo }: Props) => {
   useEffect(() => {
     setSearchedMovies(
       movies.filter((movie) =>
-        movie.title.toLowerCase().startsWith(searchValue.toLowerCase())
+        movie.title.toLowerCase().includes(searchValue.toLowerCase())
       )
     );
   }, [searchValue]);
