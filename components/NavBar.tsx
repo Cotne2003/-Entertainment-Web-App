@@ -89,6 +89,14 @@ const StyledNav = styled.nav`
     border-radius: 10px;
     margin-top: 20px;
   }
+  @media (min-width: 1024px) {
+    position: fixed;
+    flex-direction: column;
+    width: 96px;
+    height: 96vh;
+    margin: 2vh 0 2vh 30px;
+    padding: 30px 0px;
+  }
   .wrapper {
     display: flex;
     justify-content: space-between;
@@ -98,6 +106,10 @@ const StyledNav = styled.nav`
     @media (min-width: 768px) {
       max-width: 100%;
       margin: 0 20px;
+    }
+    @media (min-width: 1024px) {
+      flex-direction: column;
+      height: 100%;
     }
     .logo {
       @media (min-width: 768px) {
@@ -109,6 +121,10 @@ const StyledNav = styled.nav`
       display: flex;
       gap: 20px;
       align-items: center;
+      @media (min-width: 1024px) {
+        flex-direction: column;
+        margin-top: -45vh;
+      }
       img {
         margin-top: 5px;
         @media (max-width: 767px) {

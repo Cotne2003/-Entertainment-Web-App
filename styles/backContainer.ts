@@ -7,4 +7,9 @@ export const StyledBack = styled.div`
   @media (min-width: 768px) {
     max-width: 719px;
   }
+  @media (min-width: 1024px) {
+    max-width: calc(100vw - 170px);
+    margin: 0 0 0 170px;
+    padding-top: 15px;
+  }
 `;

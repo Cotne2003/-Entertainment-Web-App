@@ -83,12 +83,15 @@ const MovieContainer = styled.div`
   @media (min-width: 768px) {
     width: 220px;
   }
+  @media (min-width: 1024px) {
+    width: 280px;
+  }
   .hover-blur {
     display: none;
     @media (min-width: 1024px) {
       position: absolute;
       width: 100%;
-      height: 140px;
+      height: 174px;
       background-color: #00000080;
       left: 0;
       top: 0;
@@ -105,7 +108,7 @@ const MovieContainer = styled.div`
       width: 100px;
       height: 48px;
       justify-content: center;
-      gap: 12px;
+      gap: 8px;
       cursor: pointer;
       p {
         font-size: 18px;
@@ -146,6 +149,10 @@ const MovieContainer = styled.div`
     @media (min-width: 768px) {
       width: 220px;
       height: 140px;
+    }
+    @media (min-width: 1024px) {
+      width: 280px;
+      height: 174px;
     }
   }
   .movie-info {

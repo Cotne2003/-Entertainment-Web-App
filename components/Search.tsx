@@ -104,6 +104,11 @@ const StyledSection = styled.section`
       width: 739px;
       row-gap: 30px;
     }
+    @media (min-width: 1024px) {
+      width: 100%;
+      left: -1px;
+      column-gap: 30px;
+    }
   }
 `;
 

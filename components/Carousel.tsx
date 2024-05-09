@@ -110,7 +110,7 @@ const StyledCarousel = styled.div`
           width: 100px;
           height: 48px;
           justify-content: center;
-          gap: 12px;
+          gap: 8px;
           cursor: pointer;
           p {
             font-size: 18px;
