@@ -30,14 +30,13 @@ const SignUp = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "https://entertainment-web-app-murex-five.vercel.app/api/users/signup",
+        `${process.env.API_BASE_URL}/api/users/signup`,
         {
           email: watch("email"),
           password: watch("password"),
         }
       );
       router.push("/login");
-      console.log(response.data);
     } catch (error: any) {
       const axiosErr = error as AxiosError;
       if (axiosErr.response?.status === 401) {
