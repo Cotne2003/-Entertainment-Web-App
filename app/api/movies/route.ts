@@ -39,11 +39,11 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   try {
-    const isAuthorization = await getDataFromToken(req);
-    if (isAuthorization) {
-      const movies = await Movie.find();
-      return NextResponse.json(movies);
-    }
+    // const isAuthorization = await getDataFromToken(req);
+    // if (isAuthorization) {
+    const movies = await Movie.find();
+    return NextResponse.json(movies);
+    // }
   } catch (err: any) {
     return NextResponse.json({ err: err.message }, { status: 500 });
   }
