@@ -18,7 +18,7 @@ const NavBar = () => {
   const path = usePathname();
   const logout = async () => {
     try {
-      await axios.get(`${process.env.API_BASE_URL}/api/users/logout`);
+      await axios.post(`${process.env.API_BASE_URL}/api/users/logout`, {});
       router.push("/login");
     } catch (err: any) {
       console.log(err.message);
