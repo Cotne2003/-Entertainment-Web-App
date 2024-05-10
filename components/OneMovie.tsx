@@ -30,10 +30,7 @@ const OneMovie = ({ title, _id, age, date, image, type, userInfo }: Props) => {
 
   const saveMovie = async (id: string) => {
     try {
-      await axios.post(
-        `https://entertainment-web-app-lovat-eight.vercel.app/api/movies/${id}`,
-        {}
-      );
+      await axios.post(`${process.env.API_BASE_URL}/api/movies/${id}`, {});
       setSaved(!saved);
     } catch (err) {
       console.log(err);
