@@ -149,6 +149,14 @@ const StyledNav = styled.nav`
       }
     }
   }
+  .active {
+    filter: invert(99%) sepia(0%) saturate(2%) hue-rotate(257deg)
+      brightness(205%) contrast(100%);
+    &:hover {
+      filter: invert(99%) sepia(0%) saturate(2%) hue-rotate(257deg)
+        brightness(205%) contrast(100%);
+    }
+  }
   @media (min-width: 1024px) {
     img {
       &:hover {
@@ -156,13 +164,11 @@ const StyledNav = styled.nav`
           brightness(107%) contrast(98%);
       }
     }
-  }
-  .active {
-    filter: invert(99%) sepia(0%) saturate(2%) hue-rotate(257deg)
-      brightness(205%) contrast(100%);
-    &:hover {
-      filter: invert(99%) sepia(0%) saturate(2%) hue-rotate(257deg)
-        brightness(205%) contrast(100%);
+    .logout-img {
+      &:hover {
+        filter: invert(41%) sepia(82%) saturate(3512%) hue-rotate(337deg)
+          brightness(107%) contrast(98%);
+      }
     }
   }
 `;
