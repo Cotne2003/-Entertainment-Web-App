@@ -18,7 +18,7 @@ const page = () => {
   useEffect(() => {
     const getMovieTypes = async () => {
       const response = await axios.get(
-        `${process.env.API_BASE_URL}/api/users/me`
+        `https://entertainment-web-app-lovat-eight.vercel.app/api/users/me`
       );
       const responseData = response.data;
       setAllMovies(responseData);

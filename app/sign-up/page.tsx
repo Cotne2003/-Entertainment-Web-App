@@ -30,7 +30,7 @@ const SignUp = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${process.env.API_BASE_URL}/api/users/signup`,
+        `https://entertainment-web-app-lovat-eight.vercel.app/api/users/signup`,
         {
           email: watch("email"),
           password: watch("password"),
